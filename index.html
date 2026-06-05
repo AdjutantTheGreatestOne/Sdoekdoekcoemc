@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Факт дня | Праздник послушания</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 1rem;
+        }
+        .container {
+            text-align: center;
+            padding: 1.5rem;
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+        }
+
+        /* ГИРЛЯНДА ИЗ ФЛАЖКОВ */
+        .flag-garland {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+            margin-bottom: 2rem;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        .flag {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid;
+            margin: 0 -5px;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+        }
+        /* нитка поверх флажков (имитация) */
+        .flag-garland::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #888;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .flag {
+            position: relative;
+            z-index: 2;
+        }
+
+        .fact-header {
+            color: #cc0000;
+            font-size: clamp(0.7rem, 4vw, 0.9rem);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .main-text {
+            color: #cc0000;
+            font-size: clamp(0.85rem, 4.5vw, 1.2rem);
+            font-weight: 400;
+            line-height: 1.65;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        .celebrate-btn {
+            background: #cc0000;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            font-family: inherit;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.05s linear;
+            box-shadow: 0 6px 0 #7a0000;
+            margin: 1rem 0 1.2rem 0;
+            width: 90%;
+            max-width: 280px;
+            letter-spacing: 1px;
+        }
+        .celebrate-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 #7a0000;
+        }
+        .subtext {
+            color: #cc0000;
+            font-size: clamp(0.7rem, 4vw, 0.85rem);
+            font-weight: 500;
+            text-transform: uppercase;
+            border-top: 1px solid #cc0000;
+            display: inline-block;
+            padding-top: 0.8rem;
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- ГИРЛЯНДА ИЗ ФЛАЖКОВ -->
+    <div class="flag-garland">
+        <div class="flag" style="border-bottom-color: #ff3b3b;"></div>
+        <div class="flag" style="border-bottom-color: #ffdd44;"></div>
+        <div class="flag" style="border-bottom-color: #44ff44;"></div>
+
+<div class="flag" style="border-bottom-color: #ff8800;"></div>
+        <div class="flag" style="border-bottom-color: #ff44ff;"></div>
+        <div class="flag" style="border-bottom-color: #3b9eff;"></div>
+        <div class="flag" style="border-bottom-color: #ff3b3b;"></div>
+        <div class="flag" style="border-bottom-color: #ffdd44;"></div>
+        <div class="flag" style="border-bottom-color: #44ff44;"></div>
+        <div class="flag" style="border-bottom-color: #ff8800;"></div>
+        <div class="flag" style="border-bottom-color: #ff44ff;"></div>
+        <div class="flag" style="border-bottom-color: #3b9eff;"></div>
+    </div>
+
+    <div class="fact-header">
+        ⚡ БРИТАНСКАЯ ПРОПАГАНДА | СЕКРЕТНЫЙ ПЛАКАТ ⚡
+    </div>
+
+    <div class="main-text">
+        В 1939 году Британское министерство информации выпустило три пропагандистских плаката на случай вторжения нацистов. <br><br>
+        Два из них — YOUR COURAGE и FREEDOM IS IN PERIL — расклеили по всей стране. <br><br>
+        Третий, <strong>KEEP CALM AND CARRY ON</strong>, напечатали тиражом 2,5 миллиона экземпляров, но так и не выпустили. Его сочли слишком покровительственным — британцы бы просто разозлились.<br><br>
+        Плакат пролежал в коробках до 2000 года, когда его нашли в букинистическом магазине в Нортумберленде. <br><br>
+        Следующие 25 лет фраза стала главным мемом Британии: от кружек до пародий KEEP CALM AND DRINK TEA.<br><br>
+        То, что должно было успокаивать нацию в момент смертельной опасности, стало символом пафосного лицемерия и сувенирной хуйни. Ирония чистой воды.
+    </div>
+
+    <button class="celebrate-btn" id="celebrateButton">Я ПРОЧИТАЛ!</button>
+
+    <div class="subtext">
+        великий адъютант
+    </div>
+</div>
+
+<script>
+    (function() {
+        const btn = document.getElementById('celebrateButton');
+
+        // ----- ЗВУК (рабочая дудка через Web Audio) -----
+        let audioCtx = null;
+        
+        function playWhistle() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                // свист: быстрое изменение частоты
+                osc.frequency.setValueAtTime(880, now);
+                osc.frequency.exponentialRampToValueAtTime(1800, now + 0.15);
+                osc.frequency.exponentialRampToValueAtTime(1200, now + 0.3);
+                
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.6);
+                
+                osc.start(now);
+                osc.stop(now + 0.6);
+                
+                // если контекст на паузе — запускаем
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+            } catch(e) {
+                console.log("звук не удался, но это не страшно");
+            }
+        }
+        
+        // функция для принудительного "пробуждения" звука на iOS
+        function resumeAudio() {
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            } else if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+            }
+        }
+        
+        // ----- КОНФЕТТИ (самописные, надёжные)-----
+        function startConfetti() {
+            // создаём канвас
+            const canvas = document.createElement('canvas');
+
+canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '10000';
+            document.body.appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            
+            const colors = ['#ff3b3b', '#ffdd44', '#44ff44', '#ff8800', '#ff44ff', '#3b9eff', '#ffffff', '#cc0000', '#00ccff', '#ff66cc'];
+            const particles = [];
+            const particleCount = 220;
+            
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height - height,
+                    size: Math.random() * 8 + 4,
+                    speedY: Math.random() * 9 + 6,
+                    speedX: (Math.random() - 0.5) * 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360,
+                    spin: (Math.random() - 0.5) * 20
+                });
+            }
+            
+            let animId;
+            const startTime = performance.now();
+            const duration = 2500;
+            
+            function drawConfetti(now) {
+                const elapsed = now - startTime;
+                if (elapsed >= duration) {
+                    cancelAnimationFrame(animId);
+                    canvas.remove();
+                    return;
+                }
+                
+                ctx.clearRect(0, 0, width, height);
+                for (let p of particles) {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.rotation += p.spin;
+                    
+                    if (p.y < height + 100) {
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate(p.rotation * Math.PI / 180);
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                        ctx.restore();
+                    }
+                }
+                animId = requestAnimationFrame(drawConfetti);
+            }
+            
+            animId = requestAnimationFrame(drawConfetti);
+            
+            // при ресайзе обновляем размер канваса
+            const resizeHandler = () => {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            };
+            window.addEventListener('resize', resizeHandler);
+            
+            // удаляем обработчик когда всё закончится
+            setTimeout(() => {
+                window.removeEventListener('resize', resizeHandler);
+            }, duration);
+        }
+        
+        // обработчик нажатия
+        btn.addEventListener('click', () => {
+            playWhistle();
+            startConfetti();
+            
+            // вибрация кнопки
+            btn.style.transform = 'scale(0.97)';
+            setTimeout(() => { btn.style.transform = ''; }, 120);
+            
+            // вибрация телефона
+            if (navigator.vibrate) navigator.vibrate(100);
+        });
+        
+        // пробуждение звука по первому касанию экрана
+        document.body.addEventListener('touchstart', resumeAudio, { once: true });
+        document.body.addEventListener('click', resumeAudio, { once: true });
+    })();
+</script>
+</body>
+</html>
